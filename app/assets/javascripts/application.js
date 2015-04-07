@@ -12,8 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+
 //= require twitter/bootstrap
+//= require moment
+//= require fullcalendar
+
 //= require react
 //= require react_ujs
+//= require react-bootstrap
 //= require components
+
 //= require_tree .
