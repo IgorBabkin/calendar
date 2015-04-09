@@ -38,4 +38,8 @@ end
 source 'https://rails-assets.org' do
   gem 'rails-assets-fullcalendar'
   gem 'rails-assets-react-bootstrap'
+  gem 'rails-assets-jquery-validation'
+  gem 'rails-assets-lodash'
+  gem 'rails-assets-backbone'
+  gem 'rails-assets-bootstrap-datepicker'
 end

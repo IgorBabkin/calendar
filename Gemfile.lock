@@ -120,16 +120,27 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.0)
       sprockets-rails
+    rails-assets-backbone (1.1.2)
+      rails-assets-underscore (>= 1.5.0)
+    rails-assets-bootstrap (3.3.4)
+      rails-assets-jquery (>= 1.9.1)
+    rails-assets-bootstrap-datepicker (1.4.0)
+      rails-assets-bootstrap (>= 2.0.4, < 4.0)
+      rails-assets-jquery (>= 1.7.1)
     rails-assets-classnames (1.1.4)
     rails-assets-fullcalendar (2.3.1)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
     rails-assets-jquery (2.1.3)
-    rails-assets-moment (2.9.0)
+    rails-assets-jquery-validation (1.13.1)
+      rails-assets-jquery (>= 1.6.4)
+    rails-assets-lodash (3.6.0)
+    rails-assets-moment (2.10.2)
     rails-assets-react (0.13.1)
-    rails-assets-react-bootstrap (0.20.1)
+    rails-assets-react-bootstrap (0.20.2)
       rails-assets-classnames (= 1.1.4)
       rails-assets-react (>= 0.13.0)
+    rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.6)
@@ -213,7 +224,11 @@ DEPENDENCIES
   pg
   pry-rails
   rails (= 4.2.0)
+  rails-assets-backbone!
+  rails-assets-bootstrap-datepicker!
   rails-assets-fullcalendar!
+  rails-assets-jquery-validation!
+  rails-assets-lodash!
   rails-assets-react-bootstrap!
   react-rails!
   sass-rails (~> 5.0)

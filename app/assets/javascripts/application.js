@@ -16,6 +16,10 @@
 //= require twitter/bootstrap
 //= require moment
 //= require fullcalendar
+//= require bootstrap-datepicker
+//= require jquery-validation
+//= require lodash
+//= require backbone
 
 //= require react
 //= require react_ujs

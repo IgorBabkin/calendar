@@ -1,15 +1,11 @@
-@Button = ReactBootstrap.Button
-@Modal = ReactBootstrap.Modal
-
 @Calendar = React.createClass
-  mixins: [ReactBootstrap.OverlayMixin]
 
-  getInitialState: ->
-    isModalOpen: false
+  propTypes:
+    onSelect: React.PropTypes.func.isRequired
+    onEventClick: React.PropTypes.func.isRequired
 
   componentDidMount: ->
-    $calendar = $ @refs.calendar.getDOMNode()
-    $calendar.fullCalendar
+    @$el().fullCalendar
       header:
         left: 'prev,next today'
         center: 'title'
@@ -18,46 +14,22 @@
       events: '/events'
 
       selectable: true
-      select: @newEvent
-      eventClick: @editEvent
+      select: @props.onSelect
+      eventClick: @props.onEventClick
 
       eventLimit: true
       allDayDefault: true
       firstDay: 1
 
-  newEvent: (start)->
-    @openModal event
-
-  editEvent: (event)->
-    @openModal event
-
-  openModal: (event)->
-    @setState isModalOpen: true
-
-  closeModal: ->
-    @setState isModalOpen: false
-
-  submit: ->
-    $("#eventForm").submit()
-
-  onSubmit: (e)->
-    alert 'SUM'
+  shouldComponentUpdate: ->
+    false
 
   render: ->
-    `<div ref="calendar"></div>`
+    `<div ref="el" />`
 
-  renderOverlay: ->
-    return null unless @state.isModalOpen
+  $el: ->
+    $ @refs.el.getDOMNode()
 
-    `<Modal
-        title='Event'
-        bsStyle='primary'
-        onRequestHide={this.closeModal}>
-        <div className='modal-body'>
-            <EventForm onSubmit={this.onSubmit} />
-        </div>
-        <div className='modal-footer'>
-            <Button onClick={this.closeModal}>Close</Button>
-            <Button onClick={this.submit} bsStyle='primary'>Save changes</Button>
-        </div>
-    </Modal>`
+  refetchEvents: ->
+    @$el().fullCalendar 'refetchEvents'
+    @
