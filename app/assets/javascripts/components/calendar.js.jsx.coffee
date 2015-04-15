@@ -11,7 +11,7 @@
         center: 'title'
         right: 'month,basicWeek,basicDay'
 
-      events: '/events'
+      events: '/events.json'
 
       selectable: true
       select: @props.onSelect

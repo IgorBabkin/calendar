@@ -8,5 +8,5 @@
 
   _prepare: (data)->
     data = _.pick data, @fields
-    _.tap data, (data)->
-      data.since = data.since.format(@dateFormat) unless _(data.since).isString()
+    data.since = data.since.format(@dateFormat) unless _(data.since).isString()
+    data

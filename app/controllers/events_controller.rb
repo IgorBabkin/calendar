@@ -1,10 +1,16 @@
 class EventsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.between(params[:start], params[:end])
+    respond_to do |format|
+      format.html
+      format.json do
+        @events = Event.between(params[:start], params[:end]).where(filter_params)
+      end
+    end
   end
 
   # GET /events/1
@@ -70,5 +76,11 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :since, :periodicity)
+    end
+
+    def filter_params
+      filter = {}
+      filter[:user_id] = 1 if params[:user_id].present?
+      filter
     end
 end
