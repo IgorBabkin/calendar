@@ -1,29 +1,23 @@
-h2
-  | Sign up
+.form-registration
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    h2 Sign up
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
+    = devise_error_messages!
 
-  .form-group
-    = f.label :email
-    = f.email_field :email, autofocus: true, class: 'form-control'
+    = form_group(f, :email) do
+      = f.email_field :email, autofocus: true, class: 'form-control'
 
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+    = form_group(f, :name) do
+      = f.text_field :name, class: 'form-control'
 
-  .form-group
-    = f.label :password
-    - if @validatable
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
+    = form_group(f, :password) do
+      - if @validatable
+        em
+          |  (#{@minimum_password_length} characters minimum)
 
-    = f.password_field :password, autocomplete: "off", class: 'form-control'
+      = f.password_field :password, autocomplete: "off", class: 'form-control'
 
-  .form-group
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+    = form_group(f, :password_confirmation) do
+      = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
 
-  = f.submit "Sign up", class: 'btn btn-primary'
+    = f.submit "Sign up", class: 'btn btn-primary btn-block'

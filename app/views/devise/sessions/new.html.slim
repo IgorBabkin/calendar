@@ -1,6 +1,8 @@
 = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin' }) do |f|
   h2.form-signin-heading Sign in
 
+  = devise_error_messages!
+
   = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email', required: true
 
   = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true
