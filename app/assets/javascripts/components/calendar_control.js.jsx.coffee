@@ -7,6 +7,8 @@
   getInitialState: ->
     isModalOpen: false
     eventModel: null
+
+  getDefaultProps: ->
     eventsUrl: '/events.json'
 
   newEvent: (start)->
@@ -36,17 +38,13 @@
   saveEvent: ->
     @state.eventModel.save().success @updateCalendar()
 
-  filter: (e)->
-    [url, {name, value, checked}] = [URI(@state.eventsUrl), e.target]
-    @refs.calendar.changeUrl if checked
-      url.addSearch(name, value).toString()
-    else
-      url.removeSearch(name).toString()
+  changeCalendarUrl: (url)->
+    @refs.calendar.changeUrl url
 
   render: ->
     `<div>
-        <label><input type="checkbox" name="all" onChange={this.filter} /> Show only mine</label>
-        <Calendar ref="calendar" url={this.state.eventsUrl} onSelect={this.newEvent} onEventClick={this.editEvent} />
+        <UrlFilter url={this.props.eventsUrl} onChange={this.changeCalendarUrl} />
+        <Calendar ref="calendar" url={this.props.eventsUrl} onSelect={this.newEvent} onEventClick={this.editEvent} />
     </div>`
 
   renderOverlay: ->

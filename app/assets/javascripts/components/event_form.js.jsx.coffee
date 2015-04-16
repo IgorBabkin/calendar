@@ -23,7 +23,10 @@
 
     `<form ref="form" id="eventForm">
         <input type="hidden" name="id" value={model.id} readOnly />
-        {this.renderSinceField()}
+        <div className="form-group">
+        <label>Since</label>
+              <DatePicker autoclose={true} name="since" value={model.get('since')} onChange={this.changeField} format="yyyy-mm-dd" />
+        </div>
         <div className="form-group">
             <label htmlFor="title">Title</label>
             <input value={model.get('title')} onChange={this.changeField} className="form-control" id="title" type="text" name="title" autofocus="true" placeholder="Enter title here..." required />
@@ -39,14 +42,3 @@
             </select>
         </div>
     </form>`
-
-  renderSinceField: ->
-    model = @state.model
-
-    if model.isNew()
-      `<input type="hidden" name="since" value={model.get('since')} readOnly />`
-    else
-      `<div className="form-group">
-          <label>Since</label>
-          <DatePicker autoclose={true} name="since" value={model.get('since')} onChange={this.changeField} format="yyyy-mm-dd" />
-      </div>`

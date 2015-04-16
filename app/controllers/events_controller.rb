@@ -18,19 +18,10 @@ class EventsController < ApplicationController
   def show
   end
 
-  # GET /events/new
-  def new
-    @event = Event.new
-  end
-
-  # GET /events/1/edit
-  def edit
-  end
-
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -80,7 +71,7 @@ class EventsController < ApplicationController
 
     def filter_params
       filter = {}
-      filter[:user_id] = 1 if params[:user_id].present?
+      filter[:user_id] = current_user.id if params[:all].present?
       filter
     end
 end

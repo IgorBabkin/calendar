@@ -11,4 +11,4 @@
 
   render: ->
     {name, value} = @props
-    `<input ref="el" name={name} defaultValue={value} type='text' className="form-control" />`
+    `<input required ref="el" name={name} defaultValue={value} type='text' className="form-control" />`

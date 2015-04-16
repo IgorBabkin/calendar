@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   validates :title, :since, presence: true
   enum periodicity: { once: 'once', daily: 'daily', weekly: 'weekly', monthly: 'monthly', yearly: 'yearly' }
 
-  scope :between, ->(start_date, end_date) { select("events.*, start").joins(at_statement({ start: start_date, end: end_date })) }
+  scope :between, ->(start_date, end_date) { select("events.*, start").joins(at_statement(start: start_date, end: end_date)) }
   belongs_to :user
 
   private
