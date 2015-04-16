@@ -25,12 +25,15 @@
   submitEventForm: ->
     $("#eventForm").submit()
 
-  updateView: ->
+  updateCalendar: ->
     @refs.calendar.refetchEvents()
     @closeModal()
 
   destroyEvent: ->
-    @state.eventModel.destroy().success @updateView()
+    @state.eventModel.destroy().success @updateCalendar()
+
+  saveEvent: ->
+    @state.eventModel.save().success @updateCalendar()
 
   render: ->
     `<Calendar ref="calendar" onSelect={this.newEvent} onEventClick={this.editEvent} />`
@@ -39,19 +42,18 @@
     { isModalOpen, eventModel } = @state
     return null unless isModalOpen
 
+    deleteButton = `<Button className="btn-danger" onClick={ this.destroyEvent }>Delete</Button>`
+
     `<Modal
         title={ eventModel.isNew() ? 'New event' : 'Edit event' }
         bsStyle='primary'
         onRequestHide={ this.closeModal }>
         <div className='modal-body'>
-            <EventForm model={ eventModel } onSave={ this.updateView } />
+            <EventForm model={ eventModel } onSave={ this.saveEvent } />
         </div>
         <div className='modal-footer'>
             <Button onClick={ this.closeModal }>Close</Button>
-            { eventModel.isNew() ? null : this.deleteButton() }
+            { eventModel.isNew() ? null : deleteButton }
             <Button onClick={ this.submitEventForm } bsStyle='primary'>Save changes</Button>
         </div>
     </Modal>`
-
-  deleteButton: ->
-    `<Button className="btn-danger" onClick={ this.destroyEvent }>Delete</Button>`

@@ -11,7 +11,7 @@
     $form.validate submitHandler: @onSubmit
 
   onSubmit: ->
-    @state.model.save().success @props.onSave
+    @props.onSave()
     false
 
   changeField: (e)->
