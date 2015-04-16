@@ -7,6 +7,7 @@
   getInitialState: ->
     isModalOpen: false
     eventModel: null
+    eventsUrl: '/events.json'
 
   newEvent: (start)->
     @openModal since: start
@@ -35,14 +36,24 @@
   saveEvent: ->
     @state.eventModel.save().success @updateCalendar()
 
+  filter: (e)->
+    [url, {name, value, checked}] = [URI(@state.eventsUrl), e.target]
+    @refs.calendar.changeUrl if checked
+      url.addSearch(name, value).toString()
+    else
+      url.removeSearch(name).toString()
+
   render: ->
-    `<Calendar ref="calendar" onSelect={this.newEvent} onEventClick={this.editEvent} />`
+    `<div>
+        <label><input type="checkbox" name="all" onChange={this.filter} /> Show only mine</label>
+        <Calendar ref="calendar" url={this.state.eventsUrl} onSelect={this.newEvent} onEventClick={this.editEvent} />
+    </div>`
 
   renderOverlay: ->
     { isModalOpen, eventModel } = @state
     return null unless isModalOpen
 
-    deleteButton = `<Button className="btn-danger" onClick={ this.destroyEvent }>Delete</Button>`
+    deleteButton = `<Button className="btn-danger" onClick={this.destroyEvent}>Delete</Button>`
 
     `<Modal
         title={ eventModel.isNew() ? 'New event' : 'Edit event' }

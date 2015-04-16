@@ -42,4 +42,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-lodash'
   gem 'rails-assets-backbone'
   gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-URIjs'
 end

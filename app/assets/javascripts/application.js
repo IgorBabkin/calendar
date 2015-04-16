@@ -20,6 +20,7 @@
 //= require jquery-validation
 //= require lodash
 //= require backbone
+//= require URIjs
 
 //= require react
 //= require react_ujs

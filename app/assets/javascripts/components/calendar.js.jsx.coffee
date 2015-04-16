@@ -3,6 +3,10 @@
   propTypes:
     onSelect: React.PropTypes.func.isRequired
     onEventClick: React.PropTypes.func.isRequired
+    url: React.PropTypes.string.isRequired
+
+  getInitialState: ->
+    url: @props.url
 
   componentDidMount: ->
     @$el().fullCalendar
@@ -11,7 +15,7 @@
         center: 'title'
         right: 'month,basicWeek,basicDay'
 
-      events: '/events.json'
+      events: @state.url
 
       selectable: true
       select: @props.onSelect
@@ -32,4 +36,11 @@
 
   refetchEvents: ->
     @$el().fullCalendar 'refetchEvents'
+    @
+
+  changeUrl: (url)->
+    @$el().fullCalendar('removeEventSource', @state.url)
+    @$el().fullCalendar('addEventSource', url)
+
+    @setState url: url
     @

@@ -20,12 +20,17 @@ html lang="en"
 
   body
     .navbar.navbar-default.navbar-static-top
-        .container
-          a.navbar-brand href="/"
-            = welcome_message
-          .navbar-collapse.collapse.navbar-responsive-collapse
-            ul.nav.navbar-nav.navbar-right
-              = render 'layouts/auth_links'
+      .container
+        .row
+          .col-lg-2
+          .col-lg-8
+            a.navbar-brand href="/"
+              = welcome_message
+            .navbar-collapse.collapse.navbar-responsive-collapse
+              ul.nav.navbar-nav.navbar-right
+                = render 'layouts/auth_links'
+
+          .col-lg-2
 
     .container
       .row
