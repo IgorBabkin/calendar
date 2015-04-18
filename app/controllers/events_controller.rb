@@ -71,7 +71,7 @@ class EventsController < ApplicationController
 
     def filter_params
       filter = {}
-      filter[:user_id] = current_user.id if params[:all].present?
+      filter[:user_id] = current_user.id if params[:all].blank?
       filter
     end
 end
