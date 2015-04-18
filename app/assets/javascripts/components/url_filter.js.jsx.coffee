@@ -12,7 +12,7 @@
       url.removeSearch(name).toString()
 
   render: ->
-    `<label>
+    `<label className="filter">
         <input type="checkbox" name="all" onChange={this.filter} />
         Show only mine
     </label>`
