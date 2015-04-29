@@ -45,4 +45,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-backbone'
   gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-URIjs'
+  gem 'rails-assets-immutable'
 end

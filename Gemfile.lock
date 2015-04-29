@@ -133,13 +133,14 @@ GEM
     rails-assets-fullcalendar (2.3.1)
       rails-assets-jquery (>= 1.7.1)
       rails-assets-moment (>= 2.5.0)
-    rails-assets-jquery (2.1.3)
+    rails-assets-immutable (3.7.2)
+    rails-assets-jquery (2.1.4)
     rails-assets-jquery-validation (1.13.1)
       rails-assets-jquery (>= 1.6.4)
     rails-assets-lodash (3.7.0)
     rails-assets-moment (2.10.2)
-    rails-assets-react (0.13.1)
-    rails-assets-react-bootstrap (0.20.3)
+    rails-assets-react (0.13.2)
+    rails-assets-react-bootstrap (0.21.0)
       rails-assets-classnames (= 1.1.4)
       rails-assets-react (>= 0.13.0)
     rails-assets-underscore (1.8.3)
@@ -230,6 +231,7 @@ DEPENDENCIES
   rails-assets-backbone!
   rails-assets-bootstrap-datepicker!
   rails-assets-fullcalendar!
+  rails-assets-immutable!
   rails-assets-jquery-validation!
   rails-assets-lodash!
   rails-assets-react-bootstrap!

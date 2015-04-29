@@ -47,7 +47,8 @@
 
   saveEvent: (data)->
     model = @state.eventModel
-    model.save(data).success @updateCalendar()
+    model.on 'sync', @updateCalendar
+    model.save(data)
 
   changeCalendarUrl: (url)->
     @refs.calendar.changeUrl url

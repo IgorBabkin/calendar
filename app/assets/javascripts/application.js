@@ -21,6 +21,7 @@
 //= require lodash
 //= require backbone
 //= require URIjs
+//= require immutable
 
 //= require react
 //= require react_ujs

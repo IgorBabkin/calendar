@@ -5,23 +5,23 @@
     data: React.PropTypes.object.isRequired
 
   getInitialState: ->
-    data: @props.data
+    data: Immutable.Map(@props.data)
 
   componentDidMount: ->
     $form = $ @refs.form.getDOMNode()
     $form.validate submitHandler: @onSubmit
 
   onSubmit: ->
-    @props.onSave? @state.data
+    @props.onSave? @state.data.toObject()
     false
 
   changeField: (e)->
     { name, value } = e.target
-    data = _.tap @state.data, (data)-> data[name] = value
-    @setState data: data
+    @setState (prev)->
+      data: prev.data.set(name, value)
 
   render: ->
-    { id, since, title, periodicity } = @state.data
+    { id, since, title, periodicity } = @state.data.toObject()
 
     `<form ref="form" id="eventForm">
         <input type="hidden" name="id" value={id} readOnly />
